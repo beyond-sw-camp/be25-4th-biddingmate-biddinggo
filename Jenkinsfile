@@ -4,12 +4,6 @@ pipeline {
   environment {
     FRONTEND_JOB = 'biddinggo-frontend'
     BACKEND_JOB = 'biddinggo-backend'
-    GHCR_REGISTRY = 'ghcr.io'
-    GHCR_OWNER = 'nueeaeel'
-    FRONTEND_IMAGE = "${GHCR_REGISTRY}/${GHCR_OWNER}/biddinggo-frontend"
-    BACKEND_IMAGE = "${GHCR_REGISTRY}/${GHCR_OWNER}/biddinggo-backend"
-    FRONTEND_DEPLOYMENT_MANIFEST = 'infra/k8s/frontend/deployment.yaml'
-    BACKEND_DEPLOYMENT_MANIFEST = 'infra/k8s/backend/deployment.yaml'
   }
 
   stages {
@@ -43,8 +37,8 @@ pipeline {
 
           def changedFiles = changedText ? changedText.split('\n').findAll { it } : []
 
-          env.FRONTEND_CHANGED = changedFiles.any { it.startsWith('frontend/') || it.startsWith('infra/k8s/frontend/') || it == 'infra/env/frontend.env' }.toString()
-          env.BACKEND_CHANGED = changedFiles.any { it.startsWith('backend/') || it.startsWith('infra/k8s/backend/') }.toString()
+          env.FRONTEND_CHANGED = changedFiles.any { it.startsWith('infra/k8s/frontend/') }.toString()
+          env.BACKEND_CHANGED = changedFiles.any { it.startsWith('infra/k8s/backend/') }.toString()
 
           echo "Changed files:\n${changedFiles.join('\n')}"
           echo "Frontend changed: ${env.FRONTEND_CHANGED}"
@@ -73,40 +67,6 @@ pipeline {
 
           if (env.FRONTEND_CHANGED != 'true' && env.BACKEND_CHANGED != 'true') {
             echo 'No frontend/backend source changes detected. Nothing to trigger.'
-          }
-        }
-      }
-    }
-
-    stage('Update Deployment Images') {
-      when {
-        expression {
-          env.SKIP_PIPELINE != 'true' &&
-          (env.FRONTEND_CHANGED == 'true' || env.BACKEND_CHANGED == 'true')
-        }
-      }
-      steps {
-        script {
-          withCredentials([usernamePassword(credentialsId: 'github-token', usernameVariable: 'GITHUB_USER', passwordVariable: 'GITHUB_TOKEN')]) {
-            sh 'git config user.name "jenkins-bot"'
-            sh 'git config user.email "jenkins-bot@users.noreply.github.com"'
-            sh 'git remote set-url origin https://$GITHUB_USER:$GITHUB_TOKEN@github.com/nueeaeel/biddinggo-cicd-private.git'
-            sh 'git fetch origin main'
-            sh 'git checkout -B main origin/main'
-
-            if (env.FRONTEND_CHANGED == 'true') {
-              sh 'sed -i "s|image: $FRONTEND_IMAGE:.*|image: $FRONTEND_IMAGE:$FRONTEND_BUILD_NUMBER|" $FRONTEND_DEPLOYMENT_MANIFEST'
-            }
-
-            if (env.BACKEND_CHANGED == 'true') {
-              sh 'sed -i "s|image: $BACKEND_IMAGE:.*|image: $BACKEND_IMAGE:$BACKEND_BUILD_NUMBER|" $BACKEND_DEPLOYMENT_MANIFEST'
-            }
-
-            sh 'git diff -- infra/k8s/frontend/deployment.yaml infra/k8s/backend/deployment.yaml'
-            sh 'git add infra/k8s/frontend/deployment.yaml infra/k8s/backend/deployment.yaml'
-            sh 'git diff --cached --quiet && echo "No deployment image changes to commit." || git commit -m "ci: update deployment images [skip ci]"'
-            sh 'git pull --rebase origin main'
-            sh 'git push origin HEAD:main'
           }
         }
       }
