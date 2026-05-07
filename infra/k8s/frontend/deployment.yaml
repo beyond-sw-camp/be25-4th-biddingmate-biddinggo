@@ -17,7 +17,7 @@ spec:
         - name: ghcr-secret
       containers:
         - name: biddinggo-web
-          image: ghcr.io/beyond-sw-camp/be25-3rd-biddingmate-biddinggo:16
+          image: ghcr.io/beyond-sw-camp/be25-3rd-biddingmate-biddinggo:17
           ports:
             - containerPort: 80
           resources:
