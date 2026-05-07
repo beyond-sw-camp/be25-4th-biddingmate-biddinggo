@@ -263,7 +263,7 @@
 # 6.  시스템 아키텍처
 <br/>
 
-![](https://github.com/user-attachments/assets/15f9e2e3-2915-4a29-8dea-22d367af813c)<br/>
+<img width="1235" height="1134" alt="biddinggoArchitecture drawio" src="https://github.com/user-attachments/assets/455c3d80-1e3f-4911-bd38-1c3ef55cf9ab" />
 <br/>
 
 ---
