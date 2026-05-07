@@ -17,7 +17,7 @@ spec:
         - name: ghcr-secret
       containers:
         - name: biddinggo-api
-          image: ghcr.io/beyond-sw-camp/be25-2nd-biddingmate-biddinggo:16
+          image: ghcr.io/beyond-sw-camp/be25-2nd-biddingmate-biddinggo:18
           envFrom:
             - configMapRef:
                 name: biddinggo-config
