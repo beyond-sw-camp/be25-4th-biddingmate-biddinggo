@@ -604,7 +604,7 @@ pipeline {
 
 ## 시나리오
 
-<img width="1690" height="841" alt="Image" src="https://github.com/user-attachments/assets/566d743b-76c0-47d4-b212-ce2dcd0f451b" />
+<img width="1690" height="841" alt="Image" src="https://github.com/user-attachments/assets/78414dc2-fae3-42d5-a876-06e117d2f061" />
 <br/>
 
 1. Developer Push
