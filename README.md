@@ -607,16 +607,28 @@ pipeline {
 <img width="1690" height="841" alt="Image" src="https://github.com/user-attachments/assets/566d743b-76c0-47d4-b212-ce2dcd0f451b" />
 <br/>
 
-1. 코드를 수정한 후 github develop에 최신 버전 프로젝트를 commit&push
-최신 버전 코드를 commit&push 하면 이벤트 발생 <br/>
-2. github는 webhook을 통해서 젠킨스에게 이벤트 전달 <br/>
-3. 젠킨스는 파이프라인에 저장된 절차 실행
-현재 커밋과 이전 커밋 간의 변경 감지 <br/>
-변경된 백엔드/프론트엔드 파일이 있다면 build&push
-빌드를 통해 도커 이미지 생성 및 도커 허브에 push
-k8s/*.yml 수정 및 Git push
-4. argo CD는 Git 상태 자동 감지
-fornt/back 각각의 변경에 대해서 무중단 배포 실행
+1. Developer Push
+    - 개발자가 코드를 수정하고 develop 브랜치에 push 합니다.
+
+2. GitHub Webhook Trigger
+    - GitHub Webhook이 Jenkins에 빌드 이벤트를 전달합니다.
+
+3. Jenkins CI Pipeline
+    - 최신 소스 코드를 checkout 합니다.
+    - 애플리케이션 빌드 및 테스트를 수행합니다.
+    - Docker 이미지를 생성합니다.
+    - 생성된 이미지를 GHCR(GitHub Container Registry)에 Push 합니다.
+    - Kubernetes Manifest의 이미지 태그를 최신 버전으로 변경합니다.
+
+4. GitOps Manifest Update
+    - 수정된 Kubernetes Manifest를 별도의 Manifest Repository(k8s/)에 Push 합니다.
+
+5. Argo CD Sync Detection
+    - Argo CD가 Manifest Repository 변경 사항을 감지합니다.
+
+6. Kubernetes Deployment
+    - 변경된 Manifest를 Kubernetes Cluster에 반영합니다.
+    - Rolling Update 방식으로 무중단 배포를 수행합니다.
 
 ## 백엔드 
 ### 젠킨스 수행
