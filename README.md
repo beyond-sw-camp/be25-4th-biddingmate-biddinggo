@@ -694,10 +694,10 @@ fornt/back 각각의 변경에 대해서 무중단 배포 실행
 특히 백엔드나 프론트엔드처럼 결과가 화면에 바로 보이는 영역과 달리, 눈에 보이지 않는 흐름 속에서 동작하기 때문에 전체 구조를 명확히 이해하지 못하면 작은 설정 하나만으로도 배포가 실패하거나 서비스가 중단될 수 있었습니다. 그 과정에서 단순히 기능을 구현하는 개발자가 아니라, 서비스가 안정적으로 운영될 수 있는 구조를 고민하는 시야가 중요하다는 점을 배울 수 있었습니다.
 
 #### 한규진
-> CI/CD를 처음 공부할 때는 단순히 “자동 배포” 정도로만 이해했다. 하지만 Jenkins, GitHub Webhook, Docker, Kubernetes, Argo CD를 직접 연결하면서 많은 문제를 겪었고, 그 과정에서 전체 흐름을 이해하는 것이 중요하다는 것을 깨달았다.
-처음에는 GitHub에 push를 했는데 Jenkins가 동작하지 않는 문제가 있었다. 원인을 찾아보니 Webhook 설정과 ngrok 주소 변경 문제였다. 이 경험을 통해 GitHub → Webhook → Jenkins로 이어지는 이벤트 기반 구조를 이해하게 되었다.
-또한 Docker 이미지를 새로 빌드했는데 Kubernetes에서는 이전 버전 컨테이너가 계속 실행되는 문제도 있었다. 원인은 deployment yaml의 이미지 태그가 변경되지 않았기 때문이었다. 이를 해결하기 위해 Jenkins가 k8s manifest의 이미지 버전을 수정하고 Git에 다시 push하도록 구성했다.
-이 과정에서 Argo CD의 역할도 제대로 이해하게 되었다. 처음에는 Argo CD가 직접 컨테이너를 실행하는 줄 알았지만, 실제로 Pod를 생성하고 배포를 수행하는 것은 Kubernetes였다. Argo CD는 Git에 저장된 deployment yaml의 변경 사항을 감지하고, Desired State와 Live State를 비교해 차이가 발생하면 Kubernetes에 적용을 요청하는 역할이라는 점을 알게 되었다.
+> CI/CD를 처음 공부할 때는 단순히 “자동 배포” 정도로만 이해했습니다. 하지만 Jenkins, GitHub Webhook, Docker, Kubernetes, Argo CD를 직접 연결하면서 많은 문제를 겪었고, 그 과정에서 전체 흐름을 이해하는 것이 중요하다는 것을 깨달았습니다.
+처음에는 GitHub에 push를 했는데 Jenkins가 동작하지 않는 문제가 있었습니다. 원인을 찾아보니 Webhook 설정과 ngrok 주소 변경 문제였습니다. 이 경험을 통해 GitHub → Webhook → Jenkins로 이어지는 이벤트 기반 구조를 이해하게 되었습니다.
+또한 Docker 이미지를 새로 빌드했는데 Kubernetes에서는 이전 버전 컨테이너가 계속 실행되는 문제도 있었습니다. 원인은 deployment yaml의 이미지 태그가 변경되지 않았기 때문이었고, 이를 해결하기 위해 Jenkins가 k8s manifest의 이미지 버전을 수정하고 Git에 다시 push하도록 구성했습니다.
+이 과정에서 Argo CD의 역할도 제대로 이해하게 되었습니다. 처음에는 Argo CD가 직접 컨테이너를 실행하는 줄 알았지만, 실제로 Pod를 생성하고 배포를 수행하는 것은 Kubernetes였습니다. Argo CD는 Git에 저장된 deployment yaml의 변경 사항을 감지하고, Desired State와 Live State를 비교해 차이가 발생하면 Kubernetes에 적용을 요청하는 역할이라는 점을 알게 되었습니다.
 
 
 
