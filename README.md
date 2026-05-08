@@ -64,16 +64,10 @@
 <br/>
 
 1. [프로젝트 개요](#1--프로젝트-개요)
-2. [요구사항 정의서](#2--요구사항-정의서)
-3. [기술 스택](#3--기술-스택)
-4. [ERD](#4--erd)
-5. [테이블 정의서](#5--테이블-정의서)
-6. [시스템 아키텍처](#6--시스템-아키텍처)
-7. [API 명세서](#7--api-명세서)
-8. [테스트 계획 및 결과 보고서](#8--테스트-계획-및-결과-보고서)
-9. [팀 notion](#9--팀-notion)
-10. [발표 자료](#10--발표자료)
-11. [회고](#11--회고)
+2. [시스템 아키텍처](#2--시스템-아키텍처)
+3. [CICD 파이프라인](#3--CICD-파이프라인)
+4. [시현](#4--시현)
+5. [회고](#5--회고)
 
 <br/>
 
@@ -178,153 +172,548 @@
 
 ---
 
-# 2.  요구사항 정의서
-![](img/Srs.png)<br/>
-🔗[ 요구사항 정의서 ](https://docs.google.com/spreadsheets/d/16YGKpTcpo310JjvUu9Q1Nm9atCI-XYx5TB2GD3ocx3E/edit?gid=1901741334#gid=1901741334)
+# 2.  시스템 아키텍처
+<br/>
+<img width="1235" height="1134" alt="Image" src="https://github.com/user-attachments/assets/96d61b52-ec98-406d-bae5-0f93b300c47b" />
+
 <br/>
 
 ---
 
-# 3.  기술 스택
+# 3.  CICD 파이프라인
 <br/>
 
-## 🔧 Backend
-<p>
-  <img src="https://img.shields.io/badge/springboot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white">
-  <img src="https://img.shields.io/badge/java-007396?style=for-the-badge&logo=java&logoColor=white">
-  <img src="https://img.shields.io/badge/springsecurity-6DB33F?style=for-the-badge&logo=springsecurity&logoColor=white">
-  <img src="https://img.shields.io/badge/oauth2-EB5424?style=for-the-badge&logo=oauth&logoColor=white">
-  <img src="https://img.shields.io/badge/jwt-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white">
-  <img src="https://img.shields.io/badge/mybatis-000000?style=for-the-badge&logo=apache&logoColor=white">
-  <img src="https://img.shields.io/badge/flyway-CC0200?style=for-the-badge&logo=flyway&logoColor=white">
-</p>
-
-## 🗄️ Database
-<p>
-  <img src="https://img.shields.io/badge/mariadb-003545?style=for-the-badge&logo=mariadb&logoColor=white">
-  <img src="https://img.shields.io/badge/redis-DC382D?style=for-the-badge&logo=redis&logoColor=white">
-  <img src="https://img.shields.io/badge/postgresql-4169E1?style=for-the-badge&logo=postgresql&logoColor=white">
-  <img src="https://img.shields.io/badge/pgvector-000000?style=for-the-badge&logo=postgresql&logoColor=white">
-</p>
-
-## 🚀 Infra
-<p>
-  <img src="https://img.shields.io/badge/nginx-009639?style=for-the-badge&logo=nginx&logoColor=white">
-  <img src="https://img.shields.io/badge/docker-2496ED?style=for-the-badge&logo=docker&logoColor=white">
-  <img src="https://img.shields.io/badge/docker--compose-2496ED?style=for-the-badge&logo=docker&logoColor=white">
-  <img src="https://img.shields.io/badge/cloudflare%20r2-F38020?style=for-the-badge&logo=cloudflare&logoColor=white">
-  <img src="https://img.shields.io/badge/vercel-000000?style=for-the-badge&logo=vercel&logoColor=white">
-  <img src="https://img.shields.io/badge/kt%20cloud-FF0000?style=for-the-badge&logo=icloud&logoColor=white">
-  <img src="https://img.shields.io/badge/ghcr-181717?style=for-the-badge&logo=github&logoColor=white">
-  <img src="https://img.shields.io/badge/supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white">
-</p>
-
-## 🔌 API
-<p>
-  <img src="https://img.shields.io/badge/toss%20payments-0064FF?style=for-the-badge&logo=tosspayments&logoColor=white">
-  <img src="https://img.shields.io/badge/openai-412991?style=for-the-badge&logo=openai&logoColor=white">
-</p>
-
-## ⚙️ CI/CD
-<p>
-  <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
-  <img src="https://img.shields.io/badge/ghcr-181717?style=for-the-badge&logo=github&logoColor=white">
-  <img src="https://img.shields.io/badge/github%20actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white">
-</p>
-
-## 🤝 Collaboration
-<p>
-  <img src="https://img.shields.io/badge/notion-000000?style=for-the-badge&logo=notion&logoColor=white">
-  <img src="https://img.shields.io/badge/figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white">
-  <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
-  <img src="https://img.shields.io/badge/erdcloud-0B4F6C?style=for-the-badge&logo=icloud&logoColor=white">
-  <img src="https://img.shields.io/badge/discord-5865F2?style=for-the-badge&logo=discord&logoColor=white">
-</p>
+<details><summary>통합 관리 Jenkins 파이프라인</summary>
 <br/>
+<img width="1123" height="446" alt="Image" src="https://github.com/user-attachments/assets/6bb90a71-f81b-4b24-b9d6-31646931829a" />
+<br/>
+  
+```
+pipeline {
+  agent any
+
+  environment {
+    FRONTEND_JOB = 'biddinggo-frontend'
+    BACKEND_JOB = 'biddinggo-backend'
+  }
+
+  stages {
+    stage('Check CI Skip') {
+      steps {
+        script {
+          def skipStatus = sh(script: 'git rev-parse --is-inside-work-tree >/dev/null 2>&1 && git log -1 --pretty=%B | grep -q "\\[skip ci\\]"', returnStatus: true)
+          env.SKIP_PIPELINE = skipStatus == 0 ? 'true' : 'false'
+          if (env.SKIP_PIPELINE == 'true') {
+              env.SKIP_REASON = 'latest commit contains [skip ci]'
+              echo 'Skipping build because the latest commit contains [skip ci].'
+          }
+        }
+      }
+    }
+
+    stage('Detect Changed Areas') {
+      when {
+        expression { env.SKIP_PIPELINE != 'true' }
+      }
+      steps {
+        script {
+          def baseCommit = env.GIT_PREVIOUS_SUCCESSFUL_COMMIT ?: env.GIT_PREVIOUS_COMMIT
+          def changedText = ''
+
+          if (baseCommit?.trim() && sh(script: "git cat-file -e ${baseCommit}^{commit}", returnStatus: true) == 0) {
+            changedText = sh(script: "git diff --name-only ${baseCommit} HEAD", returnStdout: true).trim()
+          } else {
+            changedText = sh(script: "git show --name-only --pretty=format:'' HEAD", returnStdout: true).trim()
+          }
+
+          def changedFiles = changedText ? changedText.split('\n').findAll { it } : []
+
+          env.FRONTEND_CHANGED = changedFiles.any { it.startsWith('infra/k8s/frontend/') }.toString()
+          env.BACKEND_CHANGED = changedFiles.any { it.startsWith('infra/k8s/backend/') }.toString()
+
+          echo "Changed files:\n${changedFiles.join('\n')}"
+          echo "Frontend changed: ${env.FRONTEND_CHANGED}"
+          echo "Backend changed: ${env.BACKEND_CHANGED}"
+        }
+      }
+    }
+
+    stage('Trigger Build Jobs') {
+      when {
+        expression { env.SKIP_PIPELINE != 'true' }
+      }
+      steps {
+        script {
+          if (env.FRONTEND_CHANGED == 'true') {
+            echo "Triggering frontend job: ${env.FRONTEND_JOB}"
+            def frontendBuild = build job: env.FRONTEND_JOB, wait: true
+            env.FRONTEND_BUILD_NUMBER = frontendBuild.number.toString()
+          }
+
+          if (env.BACKEND_CHANGED == 'true') {
+            echo "Triggering backend job: ${env.BACKEND_JOB}"
+            def backendBuild = build job: env.BACKEND_JOB, wait: true
+            env.BACKEND_BUILD_NUMBER = backendBuild.number.toString()
+          }
+
+          if (env.FRONTEND_CHANGED != 'true' && env.BACKEND_CHANGED != 'true') {
+            echo 'No frontend/backend source changes detected. Nothing to trigger.'
+          }
+        }
+      }
+    }
+  }
+
+  post {
+    success {
+      script {
+        if (env.SKIP_PIPELINE == 'true') {
+          echo """
+============================================================
+  ⏭️  CI skipped
+============================================================
+
+  🧭 Build
+    Job        : ${env.JOB_NAME} #${env.BUILD_NUMBER}
+    Duration   : ${currentBuild.durationString.replace(' and counting', '')}
+
+  📝 Reason
+    Message    : ${env.SKIP_REASON ?: 'latest commit contains [skip ci]'}
+
+============================================================
+"""
+        } else {
+          echo """
+============================================================
+  ✅ BiddingGo coordinator pipeline succeeded
+============================================================
+
+  🧭 Build
+    Job        : ${env.JOB_NAME} #${env.BUILD_NUMBER}
+    Duration   : ${currentBuild.durationString.replace(' and counting', '')}
+
+  🚦 Trigger
+    Frontend   : ${env.FRONTEND_CHANGED == 'true' ? env.FRONTEND_JOB : 'skipped'}
+    Backend    : ${env.BACKEND_CHANGED == 'true' ? env.BACKEND_JOB : 'skipped'}
+
+============================================================
+"""
+        }
+      }
+    }
+    failure {
+      echo """
+============================================================
+  ❌ BiddingGo coordinator pipeline failed
+============================================================
+
+  🧭 Build
+    Job        : ${env.JOB_NAME} #${env.BUILD_NUMBER}
+    Duration   : ${currentBuild.durationString.replace(' and counting', '')}
+
+  🔎 Debug
+    Console    : ${env.BUILD_URL}console
+
+============================================================
+"""
+    }
+  }
+}
+
+```
+<details><summary>파이프라인 상세</summary>
+  Declarative: Checkout SCM : Jenkins가 GitHub 저장소를 자동 체크아웃 <br/>
+  Check CI Skip : 최신 커밋 메시지에 [skip ci]가 있으면 파이프라인 스킵 <br/>
+  Detect Changed Areas : 변경 파일을 기준으로 frontend/backend의 manifest 변경 여부 감지 <br/>
+  Trigger Build Jobs : 변경된 영역의 하위 Jenkins Job을 순차 실행하고 빌드 번호 저장
+  </details>  
+  
+</details>
+
+<br/>
+
+<details><summary>프론트엔드 Jenkins 파이프라인</summary>
+<br/>
+<img width="1127" height="440" alt="Image" src="https://github.com/user-attachments/assets/5c6c32db-d821-44ff-8f2c-358b3284f367" />
+<br/>
+  
+```
+pipeline {
+  agent any
+
+  options {
+    disableConcurrentBuilds()
+  }
+
+  environment {
+    GHCR_REGISTRY = 'ghcr.io'
+    GHCR_OWNER = 'beyond-sw-camp'
+    IMAGE_NAME = 'be25-3rd-biddingmate-biddinggo'
+    GHCR_IMAGE_NAME = "${GHCR_REGISTRY}/${GHCR_OWNER}/${IMAGE_NAME}"
+
+    CICD_REPO_URL = 'github.com/beyond-sw-camp/be25-4th-biddingmate-biddinggo.git'
+    FRONTEND_DEPLOYMENT_MANIFEST = 'infra/k8s/frontend/deployment.yaml'
+
+    VITE_API_BASE_URL = 'https://api.bidding-go.shop'
+    VITE_TOSS_CLIENT_KEY = 'test_ck_4yKeq5bgrpPoPA0lxOkXrGX0lzW6'
+  }
+
+  stages {
+    stage('Docker Build') {
+      steps {
+        script {
+          env.IMAGE_TAG = "${env.BUILD_NUMBER}"
+        }
+
+        sh '''
+          docker build --no-cache \
+            --build-arg VITE_API_BASE_URL=$VITE_API_BASE_URL \
+            --build-arg VITE_TOSS_CLIENT_KEY=$VITE_TOSS_CLIENT_KEY \
+            -t $GHCR_IMAGE_NAME:$IMAGE_TAG \
+            -t $GHCR_IMAGE_NAME:latest \
+            .
+        '''
+
+        sh 'docker image inspect $GHCR_IMAGE_NAME:$IMAGE_TAG'
+      }
+    }
+
+    stage('Push to GHCR') {
+      steps {
+        withCredentials([usernamePassword(credentialsId: 'github-token', usernameVariable: 'GITHUB_USER', passwordVariable: 'GITHUB_TOKEN')]) {
+          sh '''
+            echo "$GITHUB_TOKEN" | docker login $GHCR_REGISTRY -u "$GITHUB_USER" --password-stdin
+            docker push $GHCR_IMAGE_NAME:$IMAGE_TAG
+            docker push $GHCR_IMAGE_NAME:latest
+            docker logout $GHCR_REGISTRY
+          '''
+        }
+      }
+    }
+
+    stage('Update Frontend Deployment') {
+      steps {
+        withCredentials([usernamePassword(credentialsId: 'github-token', usernameVariable: 'GITHUB_USER', passwordVariable: 'GITHUB_TOKEN')]) {
+          sh '''
+            rm -rf cicd-repo
+            git clone https://$GITHUB_USER:$GITHUB_TOKEN@$CICD_REPO_URL cicd-repo
+
+            cd cicd-repo
+
+            git config user.name "jenkins-bot"
+            git config user.email "jenkins-bot@users.noreply.github.com"
+
+            sed -i "s|image: .*|image: $GHCR_IMAGE_NAME:$IMAGE_TAG|" $FRONTEND_DEPLOYMENT_MANIFEST
+
+            grep "image: $GHCR_IMAGE_NAME:$IMAGE_TAG" $FRONTEND_DEPLOYMENT_MANIFEST
+
+            git diff -- $FRONTEND_DEPLOYMENT_MANIFEST
+            git add $FRONTEND_DEPLOYMENT_MANIFEST
+            git diff --cached --quiet && echo "No frontend image change." || git commit -m "ci: update frontend image to $IMAGE_TAG [skip ci]"
+            git pull --rebase origin main
+            git push origin main
+          '''
+        }
+      }
+    }
+  }
+
+  post {
+    success {
+      echo """
+============================================================
+  ✅ BiddingGo frontend pipeline succeeded
+============================================================
+
+  🧭 Build
+    Job        : ${env.JOB_NAME} #${env.BUILD_NUMBER}
+    Duration   : ${currentBuild.durationString.replace(' and counting', '')}
+
+  🐳 Image
+    Version    : ${env.GHCR_IMAGE_NAME}:${env.IMAGE_TAG}
+
+============================================================
+"""
+    }
+
+    failure {
+      echo """
+============================================================
+  ❌ BiddingGo frontend pipeline failed
+============================================================
+
+  🧭 Build
+    Job        : ${env.JOB_NAME} #${env.BUILD_NUMBER}
+    Duration   : ${currentBuild.durationString.replace(' and counting', '')}
+
+  🔎 Debug
+    Console    : ${env.BUILD_URL}console
+
+============================================================
+"""
+    }
+  }
+}
+```
+<details><summary>파이프라인 상세</summary>
+  Declarative: Checkout SCM : Jenkins가 GitHub 저장소를 자동 체크아웃 <br/>
+  Docker Build : 프론트엔드 Docker 이미지를 Jenkins 빌드 번호 태그와 latest 태그로 빌드 <br/>
+  Push to GHCR : 빌드된 프론트엔드 이미지를 GHCR에 push <br/>
+  Update Frontend Deployment : Job 빌드 번호로 프론트엔드의 deployment.yaml 이미지 태그 수정 후 main에 push
+</details>
+
+</details>
+
+<br/>
+
+<details><summary>백엔드 Jenkins 파이프라인</summary>
+<br/>
+<img width="1121" height="442" alt="Image" src="https://github.com/user-attachments/assets/7b034184-27c5-470a-9f05-fa271e4390db" />
+<br/>
+  
+```
+pipeline {
+  agent any
+
+  options {
+    disableConcurrentBuilds()
+  }
+
+  environment {
+    GHCR_REGISTRY = 'ghcr.io'
+    GHCR_OWNER = 'beyond-sw-camp'
+    IMAGE_NAME = 'be25-2nd-biddingmate-biddinggo'
+    GHCR_IMAGE_NAME = "${GHCR_REGISTRY}/${GHCR_OWNER}/${IMAGE_NAME}"
+
+    CICD_REPO_URL = 'github.com/beyond-sw-camp/be25-4th-biddingmate-biddinggo.git'
+    BACKEND_DEPLOYMENT_MANIFEST = 'infra/k8s/backend/deployment.yaml'
+  }
+
+  stages {
+    stage('Docker Build') {
+      steps {
+        script {
+          env.IMAGE_TAG = "${env.BUILD_NUMBER}"
+        }
+
+        sh '''
+          docker build --no-cache \
+            -t $GHCR_IMAGE_NAME:$IMAGE_TAG \
+            -t $GHCR_IMAGE_NAME:latest \
+            .
+        '''
+
+        sh 'docker image inspect $GHCR_IMAGE_NAME:$IMAGE_TAG'
+      }
+    }
+
+    stage('Push to GHCR') {
+      steps {
+        withCredentials([usernamePassword(credentialsId: 'github-token', usernameVariable: 'GITHUB_USER', passwordVariable: 'GITHUB_TOKEN')]) {
+          sh '''
+            echo "$GITHUB_TOKEN" | docker login $GHCR_REGISTRY -u "$GITHUB_USER" --password-stdin
+            docker push $GHCR_IMAGE_NAME:$IMAGE_TAG
+            docker push $GHCR_IMAGE_NAME:latest
+            docker logout $GHCR_REGISTRY
+          '''
+        }
+      }
+    }
+
+    stage('Update Backend Deployment') {
+      steps {
+        withCredentials([usernamePassword(credentialsId: 'github-token', usernameVariable: 'GITHUB_USER', passwordVariable: 'GITHUB_TOKEN')]) {
+          sh '''
+            rm -rf cicd-repo
+            git clone https://$GITHUB_USER:$GITHUB_TOKEN@$CICD_REPO_URL cicd-repo
+
+            cd cicd-repo
+
+            git config user.name "jenkins-bot"
+            git config user.email "jenkins-bot@users.noreply.github.com"
+
+            echo "Before:"
+            grep -n "image:" $BACKEND_DEPLOYMENT_MANIFEST
+
+            sed -i "s|image: .*|image: $GHCR_IMAGE_NAME:$IMAGE_TAG|" $BACKEND_DEPLOYMENT_MANIFEST
+
+            echo "After:"
+            grep -n "$GHCR_IMAGE_NAME:$IMAGE_TAG" $BACKEND_DEPLOYMENT_MANIFEST
+
+            git diff -- $BACKEND_DEPLOYMENT_MANIFEST
+            git add $BACKEND_DEPLOYMENT_MANIFEST
+            git diff --cached --quiet && echo "No backend image change." || git commit -m "ci: update backend image to $IMAGE_TAG [skip ci]"
+            git pull --rebase origin main
+            git push origin main
+          '''
+        }
+      }
+    }
+  }
+
+  post {
+    success {
+      echo """
+============================================================
+  ✅ BiddingGo backend pipeline succeeded
+============================================================
+
+  🧭 Build
+    Job        : ${env.JOB_NAME} #${env.BUILD_NUMBER}
+    Duration   : ${currentBuild.durationString.replace(' and counting', '')}
+
+  🐳 Image
+    Version    : ${env.GHCR_IMAGE_NAME}:${env.IMAGE_TAG}
+
+============================================================
+"""
+    }
+
+    failure {
+      echo """
+============================================================
+  ❌ BiddingGo backend pipeline failed
+============================================================
+
+  🧭 Build
+    Job        : ${env.JOB_NAME} #${env.BUILD_NUMBER}
+    Duration   : ${currentBuild.durationString.replace(' and counting', '')}
+
+  🔎 Debug
+    Console    : ${env.BUILD_URL}console
+
+============================================================
+"""
+    }
+  }
+}
+```
+<details><summary>파이프라인 상세</summary>
+  Declarative: Checkout SCM : Jenkins가 GitHub 저장소를 자동 체크아웃 <br/>
+  Docker Build : 백엔드 Docker 이미지를 Jenkins 빌드 번호 태그와 latest 태그로 빌드 <br/>
+  Push to GHCR : 빌드된 백엔드 이미지를 GHCR에 push <br/>
+  Update Frontend Deployment : Job 빌드 번호로 백엔드의 deployment.yaml 이미지 태그 수정 후 main에 push
+</details>
+
+</details>
 
 ---
 
-# 4.  ERD
-![](img/erd.png)<br/>
-🔗[ ERD ](https://www.erdcloud.com/d/zfbRbiMEYW5M3uegM)
+# 4.  시연
 <br/>
+
+## 시나리오
+
+<img width="1690" height="841" alt="Image" src="https://github.com/user-attachments/assets/566d743b-76c0-47d4-b212-ce2dcd0f451b" />
+<br/>
+
+1. Developer Push
+    - 개발자가 코드를 수정하고 develop 브랜치에 push 합니다.
+
+2. GitHub Webhook Trigger
+    - GitHub Webhook이 Jenkins에 빌드 이벤트를 전달합니다.
+
+3. Jenkins CI Pipeline
+    - 최신 소스 코드를 checkout 합니다.
+    - 애플리케이션 빌드 및 테스트를 수행합니다.
+    - Docker 이미지를 생성합니다.
+    - 생성된 이미지를 GHCR(GitHub Container Registry)에 Push 합니다.
+    - Kubernetes Manifest의 이미지 태그를 최신 버전으로 변경합니다.
+
+4. GitOps Manifest Update
+    - 수정된 Kubernetes Manifest를 별도의 Manifest Repository(k8s/)에 Push 합니다.
+
+5. Argo CD Sync Detection
+    - Argo CD가 Manifest Repository 변경 사항을 감지합니다.
+
+6. Kubernetes Deployment
+    - 변경된 Manifest를 Kubernetes Cluster에 반영합니다.
+    - Rolling Update 방식으로 무중단 배포를 수행합니다.
+
+## 백엔드 
+### 젠킨스 수행
+
+📽️[ 백엔드 젠킨스 ](https://www.youtube.com/watch?v=8yNteZhcY50) 
+
+<img width="1310" height="647" alt="Image" src="https://github.com/user-attachments/assets/8c411deb-4b74-4100-a17f-de567d52722b" />
+
+### ArgoCD 배포
+
+📽️[ 백엔드 ArgoCD ](https://www.youtube.com/watch?v=AGdeFLccURE)
+
+<img width="1377" height="645" alt="Image" src="https://github.com/user-attachments/assets/bb3957e0-1e6d-4c8a-a2db-9a15f41dc6f0" />
+
+### Manifests 결과
+
+<img width="1907" height="876" alt="Image" src="https://github.com/user-attachments/assets/7d1f14ba-bc0d-4817-9f4a-18bb7c4f813b" />
+
+<br/>
+
+## 프론트
+### 젠킨스 수행
+
+📽️[ 프론트 젠킨스 ](https://youtu.be/bRz8vDVpGfo)
+
+<img width="1240" height="617" alt="Image" src="https://github.com/user-attachments/assets/d7e409b2-1358-4b1a-bea4-0572d7c29440" />
+
+### ArgoCD 배포
+
+📽️[ 프론트엔드 ArgoCD ](https://youtu.be/EYA67qtOV-g)
+
+<img width="1303" height="612" alt="Image" src="https://github.com/user-attachments/assets/f02b8098-34a3-4539-b46d-b3fca63f2bd3" />
+
+### Manifests 결과
+
+<img width="1918" height="956" alt="Image" src="https://github.com/user-attachments/assets/21a26651-5bf3-4905-ac68-7bf2eb10818e" />
+
+<br/>
+
+## 통합관리
+### 젠킨스 수행
+
+📽️[ 통합관리 젠킨스 ](https://youtu.be/LRn-8iS_6QM)
+
+<img width="1235" height="611" alt="Image" src="https://github.com/user-attachments/assets/9d0f36a4-c56c-406e-8cdd-546b11510710" />
+
+### ArgoCD 배포
+
+📽️[ 통합관리 ArgoCD ](https://youtu.be/4KkbAsrXCrM)
+
+<img width="1293" height="612" alt="Image" src="https://github.com/user-attachments/assets/ae486f21-ada4-4059-bf47-4afcad909ec0" />
 
 ---
 
-# 5.  테이블 정의서
-![](img/table.PNG)<br/>
-🔗[MariaDB 테이블 정의서](https://docs.google.com/spreadsheets/d/16YGKpTcpo310JjvUu9Q1Nm9atCI-XYx5TB2GD3ocx3E/edit?gid=114956902#gid=114956902)
-
-🔗[Supabase 테이블 정의서](https://docs.google.com/spreadsheets/d/16YGKpTcpo310JjvUu9Q1Nm9atCI-XYx5TB2GD3ocx3E/edit?gid=1153156764#gid=1153156764)
 <br/>
 
----
-
-# 6.  시스템 아키텍처
-<br/>
-
-<img width="1235" height="1134" alt="biddinggoArchitecture drawio" src="https://github.com/user-attachments/assets/455c3d80-1e3f-4911-bd38-1c3ef55cf9ab" />
-<br/>
-
----
-# 7.  API 명세서
-![](img/table.PNG)<br/>
-🔗[API 명세서](https://www.notion.so/3441072487c38020a8c7f55914b4c234?v=3441072487c3818cbbfa000c9265993d&source=copy_link)
-<br/>
-
----
-
-# 8.  테스트 계획 및 결과 보고서
-<br/>
-
-🔗[테스트 계획 및 결과 보고서](https://docs.google.com/spreadsheets/d/16YGKpTcpo310JjvUu9Q1Nm9atCI-XYx5TB2GD3ocx3E/edit?gid=1106294099#gid=1106294099)
-<br/>
-
----
-
-# 9.  팀 notion
-<br/>
-
-🔗[팀 notion](https://www.notion.so/2-2fb1072487c380368604fa96626503a4?source=copy_link)
-<br/>
-
----
-
-# 10.  발표자료
-<br/>
-
-🔗[발표자료](docs/biddinggo-presentation.pdf)
-<br/>
-
----
-
-# 11.  회고
-<br/>
+# 5.  회고
 
 #### 김진혁
-> 첫 개발 프로젝트를 팀장을 맡아 진행함에 큰 트러블 없이 계획대로 일찍 개발이 완료된 점이 팀원 모두가 정말 잘 도와준 것 같아서 이 글을 통해서라도 감사의 인사를 드립니다. 이번 프로젝트는 2월부터 시작이되어 4월 20일에 마감이 되었는데, 2월 당시만 하더라도 프론트엔드는 커녕 스프링 조차 처음써보는 단계였습니다. 자바는 익숙해도 스프링을 처음이라 전체 프로젝트 구조를 어떻게 짜야 될 지 고민이 많았습니다. 그럴 때 일수록 매일을 찾아보고 물어보면서 한 스탭씩 나아갔 던 것 같습니다. 프로젝트 내내 매번이 새로운 기술을 쓰고 해보지 않은 코드를 짜는 것이 마치 어둠 속을 천천히 가는게 아닌 전력 질주를 하는 느낌이라 두려움도 컸습니다. 뒤돌아서 보면 그렇게 무작정 코드를 짜고 좌절했던 경험들이 가장 빠르게 프로젝트를 이해하는 길임을 느낍니다. 이번 프로젝트에선 인증인가(oauth2), 관리자 공지사항, sse, 프론트엔드를 담당했습니다. 저희 프로젝트는 jwt 기반 oauth2와 관리자는 자체 로그인으로 구현을 기획했습니다. 가장 어려웠던 부분은 OAuth2 자체를 붙이는 것보다, 로그인 이후 인증 흐름을 JWT 필터와 Spring Security 필터 체인에 안정적으로 녹여내는 과정이었습니다. OAuth2 인증 성공 후 access/refresh 토큰을 어떤 지점에서 발급하고 어떤 방식으로 전달할지 설계하는 것부터, 필터 순서에 따라 인증이 누락되거나 401이 반복되는 문제를 해결하는 데 많은 시행착오가 있었습니다. SSE도 단순 연결이 아니라 운영 관점의 안정성이 핵심이었습니다. SseEmitter 기반으로 사용자별 emitter를 ConcurrentHashMap<memberId, SseEmitter>로 관리하고, onCompletion, onTimeout, onError 콜백에서 즉시 제거하도록 구성해 누수를 방지했습니다. 또한 전송 실패 시 stale emitter를 정리하고, JWT 인증 이후 사용자 컨텍스트 기준으로 이벤트를 발행해 권한 없는 구독을 막았습니다. 이 경험을 통해 기능 구현 자체보다 인증과 실시간 통신의 전체 라이프사이클을 설계하고 안정화하는 역량이 더 중요하다는 것을 배웠습니다.
+> Jenkins와 ArgoCD를 활용해 CI/CD 파이프라인을 구축하며 도구의 설정보다 전체적인 흐름을 이해하는 데 집중했습니다. 설정이 복잡한 도구 특성상 특정 인원에게 기술이 편중되는 것을 막기 위해, 팀원 모두가 각자의 코드로 파이프라인을 직접 구축하고 발표하는 시간을 가졌습니다. 이 과정을 통해 파이프라인 전반의 데이터 흐름을 팀 전체가 명확히 동기화하고 유기적인 협업 환경을 만들 수 있었습니다.
+쿠버네티스 도입 과정에서는 Ingress와 Service, Pod로 이어지는 네트워크 라우팅 구조를 파악하는 것이 가장 큰 과제였습니다. 외부 트래픽이 각 컴포넌트를 거쳐 내부 서비스까지 도달하는 경로를 추적하며 생소했던 쿠버네티스 네트워킹 메커니즘을 익혔습니다. 단순히 설정 파일을 작성하는 것을 넘어 전체적인 시스템 아키텍처 내에서 데이터가 어떻게 이동하는지 시각화하며 설계 역량을 쌓았습니다.
+운영 면에서는 쿠버네티스의 높은 자원 점유율로 인해 서버가 빈번히 다운되는 물리적 한계에 부딪혔습니다. 이를 해결하기 위해 경량화된 K3s를 도입하고, Jenkins와 ArgoCD 같은 관리 도구와 애플리케이션 배포 환경을 별도의 서버로 분리하여 부하를 분산시켰습니다. 이러한 시행착오를 통해 한정된 자원 내에서 시스템 안정성을 확보하기 위한 리소스 관리의 중요성을 체감하며 지속 가능한 운영 방식을 고민해 볼 수 있었습니다.
  
 #### 박선우
-> 6명의 인원으로 진행된 협업 프로젝트는 처음이라 걱정이 많았습니다. 다행히 팀장님의 빠른 방향 정리와 팀원들과의 많은 회의와 소통을 통해 시스템 구현 전 ERD 설계, 테이블 정의, API 명세까지 안정적으로 진행할 수 있었습니다. 특히, Git 브랜치 전략과 커밋 컨벤션을 함께 정의하고 적용하며 GitHub 이슈와 PR을 통해 협업을 진행해본 경험이 인상 깊었습니다. 실제 개발자들의 협업 프로세스를 미리 경험해볼 수 있었다는 점에서 개인적으로 재미있고 의미 있는 과정이었습니다. 구현 과정에서는 공통 예외 처리와 응답 래퍼 구조를 팀원들에게 공유하며 코드를 재사용 가능한 형태로 만드는 경험을 할 수 있었습니다. 이 과정에서 팀원들이 코드를 쉽게 이해할 수 있도록 어떻게 설명해주면 좋을지 아니면 더 단순하고 직관적인 구조로 개선할 수는 없는지에 대해 많은 고민을 해볼 수 있었습니다. 또한, 외부 API(Toss Payments, Cloudflare R2 등)를 연동하면서 애플리케이션이 외부 시스템과 통신하는 구조를 이해할 수 있었으며 특히, R2의 presigned URL 기반 업로드 흐름을 팀원들의 설명을 통해서 개념을 명확히 정리할 수 있었습니다. 경매 서비스의 특성상 발생하는 동시성 문제도 파악하게 되었습니다. 이는 비관적 락을 사용하여 해결했지만 일부 로직에는 아직 적용하지 못한 아쉬움이 남습니다. 이 점은 향후 개선해야 할 중요한 포인트라 생각합니다. 구현 단계까지만 고려하고 있던 저에게 팀원들이 구성한 CI/CD 기반 배포 과정은 행운이였습니다. 익숙하지 않은 영역이었지만, 아키텍처 구조를 바탕으로 설명해준 덕분에 배포 흐름을 보다 명확하게 이해할 수 있었습니다. 두 달 동안 BiddingGo 프로젝트를 진행하며 쉽지 않은 순간들도 있었지만, 함께 배우고 성장하는 모습을 지켜보는 과정이 개인적으로 즐겁고 의미 있는 경험이었습니다. 말 많고 걱정 많은 저랑 함께 해준 팀원들께 감사드립니다. 
+> 이번 프로젝트를 통해서 실제 운영 환경에서 안정적으로 배포하고 관리하는 과정의 중요성을 크게 느꼈습니다. Docker, Jenkins, Kubernetes, Argo CD를 직접 사용해보면서 환경 변수 관리, 이미지 버전 관리, 배포 자동화 등 다양한 시행착오를 경험했고, 특히 Replica 환경에서 OAuth 세션 문제가 발생했던 경험을 통해 인증 구조와 운영 환경을 함께 고려해야 한다는 점을 배울 수 있었습니다. 또한 Jenkins CrashLoopBackOff나 Kubernetes 설정 오류를 해결하는 과정에서 로그를 기반으로 원인을 분석하고 문제를 추적하는 경험도 할 수 있었습니다. 이전에는 인프라와 배포를 개발 외 영역처럼 느꼈지만, 안정적인 서비스를 위해서는 개발과 운영이 유기적으로 연결되어야 한다는 점을 이해하게 되었습니다.
 
 #### 윤정윤
-> 개발을 진행하면서 더 크게 막혔던 부분은 기술보다는 도메인 자체였습니다. 팀원 모두가 실제 경매 경험이 없었기 때문에, 경매가 어떤 흐름으로 돌아가는지부터 다시 이해해야 했습니다. 낙찰은 어떤 기준으로 결정되는지, 비크리 경매는 무엇인지 같은 기본적인 개념조차 명확하지 않은 상태에서 개발을 진행하려다 보니, 구현을 하면서도 이 로직이 맞는지 확신할 수 없는 상황이 반복되었습니다. 이때 도메인을 제대로 이해하지 못하면 코드가 아무리 맞아도 서비스는 틀릴 수 있다는 것을 체감했고 이후에는 기능 구현보다 먼저 도메인과 서비스 전체 흐름에 대한 이해에 더 많은 시간을 투자해야 하겠다는 생각을 했습니다.
- 협업 과정에서는 소통의 중요성을 계속 느끼게 되었습니다. 경매라는 익숙하지 않은 도메인을 다루다 보니 입찰 조건, 종료 방식, 예외 처리 등에서 팀원 간의 기준이 조금씩 달랐습니다. 또한 각자 이전에 경험한 개발 방식이 달랐기 때문에 코드 스타일이나 설계 방식에서도 차이가 있었습니다. 이런 상태에서는 기능 구현보다 기준을 맞추는 과정이 더 중요했고, 이를 위해 지속적인 소통이 필요했습니다.
- 흥미로웠던 점은 소통이 중요하다는 것을 알고 있는 것과 실제로 잘 이루어지는 것은 전혀 다른 문제라는 것입니다. 우리 팀은 비교적 원활하게 소통이 이루어졌는데, 그 이유는 질문을 해도 부담이 없고, 의견을 말해도 충돌이 아니라 논의로 이어지는 분위기가 있었기 때문이라고 생각합니다. 결국 협업의 효율은 개인의 역량보다도 팀의 분위기와 문화에 크게 영향을 받는다는 것을 느꼈습니다.
- 이 프로젝트를 통해 개발을 바라보는 관점도 많이 바뀌었습니다. 이전에는 기능을 구현하고 기술을 사용하는 것 자체에 집중했다면, 이제는 유저가 어떻게 사용하는지, 도메인이 어떻게 동작하는지, 그리고 팀이 어떻게 협업하는지를 함께 고려하게 되었습니다. 결국 개발은 단순히 코드를 작성하는 것이 아니라, 문제를 이해하고 구조를 설계하는 과정이라는 것을 이번 경험을 통해 확실하게 느낄 수 있었습니다.
+> 이번 프로젝트에서는 기존에 사용하던 GitHub Actions 기반 CI/CD 환경에서 벗어나 Jenkins와 ArgoCD를 직접 구축하며 Kubernetes 기반 운영 환경을 구성해볼 수 있었습니다. 특히 ArgoCD가 Kubernetes API Server를 통해 실제 클러스터 상태를 관리하는 구조를 이해하면서, Kubernetes가 단순한 컨테이너 실행 도구가 아니라 원하는 상태를 유지하기 위한 시스템이라는 점이 인상 깊었습니다.
+구축 과정에서 가장 크게 느낀 부분은 서버 자원 관리의 중요성이었습니다. 단일 서버 환경에서 Jenkins, ArgoCD, ingress-nginx, Database 등을 함께 운영하다 보니 작은 설정 충돌이나 리소스 부족만으로도 ingress 연결이 실패하거나 API timeout이 발생하는 상황이 자주 발생했습니다. 처음에는 단순히 설정 문제라고 생각했지만, 실제로는 여러 인프라 요소들이 동시에 자원을 사용하면서 발생하는 문제인 경우도 많았습니다. 이를 해결하는 과정에서 기능 구현만큼이나 현재 서버 상태를 확인하고, 어떤 프로세스가 어떤 역할을 하는지 이해하는 것이 중요하다는 점을 느낄 수 있었습니다.
 
 #### 이민경
-> 스프링 개발 경험이 부족했던 저에게 이번 프로젝트는 처음부터 쉽지 않은 도전이었습니다. 익숙하지 않은 개념과 구조 때문에 막히는 순간도 많았지만 포기하지 않고 끝까지 해내고 싶다는 마음으로 하나씩 해결해 나갔고 그 과정 자체가 저에게는 무엇보다 의미 있는 시간이었습니다.
-경매 서비스 특성상 포인트, 입찰, 회원 등 여러 데이터가 복잡하게 연결되어 있어 로직을 설계하는 과정이 특히 어려웠습니다. 하지만 데이터 무결성을 유지하기 위해 고민하며 쿼리를 개선해 나가면서 백엔드 로직에 대한 이해를 점점 깊게 쌓을 수 있었습니다. 그중에서도 낙찰 스케줄러를 구현하며 마감 직전 발생할 수 있는 동시성 문제를 해결했던 경험은 단순히 기능을 구현하는 것을 넘어 시스템을 안정적으로 설계하는 것의 중요성을 직접 느끼게 해준 계기였습니다.
-또 GitHub의 PR과 코드 리뷰를 통한 협업 경험으로 인해 제가 작성한 코드를 팀원들과 공유하고 서로 피드백을 주고받는 과정에서 더 나은 구조를 고민할 수 있었습니다. 특히 혼자였다면 놓쳤을 부분들을 팀원들의 시선으로 다시 바라보게 되면서 기술적인 성장뿐 아니라 타인의 코드를 이해하고 제 생각을 논리적으로 전달하는 능력도 함께 키울 수 있었습니다. 두 달 동안 BiddingGo 프로젝트를 진행하면서 쉽지 않은 순간도 많았지만 그때마다 함께 고민해준 팀원들 덕분에 끝까지 완주할 수 있었습니다. 늘 책임감을 가지고 함께해 준 팀원들에게 진심으로 감사드립니다.
+> 이번 프로젝트를 진행하며 가장 큰 벽이자 도전이었던 부분은 CI/CD 파이프라인 구축이었습니다. 내가 만든 서비스를 사용자들이 실제로 이용할 수 있다는 점은 흥미로웠지만 그 과정은 생각보다 훨씬 복잡하고 정교한 설계가 필요했습니다. 사실 처음에는 배포에 대해 아무것도 몰랐기에 Docker, Jenkins, Argo CD 같은 도구들을 왜 써야 하는지조차 이해하기 어려워 막막하기만 했습니다. 설정 하나만 어긋나도 실패 메시지가 뜨는 탓에 환경 설정이나 권한 문제, 네트워크 이슈로 배포가 막힐 때마다 한계를 느끼기도 했습니다. 하지만 계속되는 실패를 복구하며 로그를 뜯어보고 쿠버네티스의 동작 원리를 하나씩 파헤치다 보니 어느덧 배포의 흐름이 보이기 시작했습니다. 잦은 에러 덕분에 오히려 트러블슈팅 역량을 제대로 키울 수 있었던 것 같습니다. 무엇보다 팀원분들이 다들 열심히 하셔서 저 또한 포기하지 않고 끝까지 할 수 있었습니다. 이번에 배운 기술과 협업의 소중함을 발판 삼아서 앞으로 더 단단하게 성장하는 개발자가 되겠습니다. 고생 많으셨습니다!
 
 #### 이애은
-> 이번 프로젝트에서는 경매 서비스의 핵심 로직인 입찰과 낙찰, 그리고 결제 프로세스를 구현하며 서비스 전반의 흐름을 깊이 이해할 수 있었습니다. 특히 실시간으로 변화하는 경매 특성상 데이터의 정합성을 보장하는 것이 매우 중요했기 때문에, 이를 해결하기 위해 비관적 락과 트랜잭션 처리에 대해 다양한 방식으로 고민하고 적용해보았습니다. 단순한 기능 구현을 넘어, 실제 서비스에서 발생할 수 있는 동시성 문제를 어떻게 안정적으로 제어할 것인지에 대해 한층 더 깊이 있는 학습을 할 수 있었던 경험이었습니다.
-또한 초반에는 처음 접해보는 기술 스택을 활용해야 했기 때문에 낯설고 어려운 부분도 있었지만, 팀원분들과 적극적으로 소통하며 문제를 해결해 나가는 과정에서 기술뿐만 아니라 협업의 중요성도 함께 배울 수 있었습니다.
-개발 단계에만 머무르지 않고, CI/CD 환경을 구축하고 실제 배포까지 경험해본 점 또한 의미 있었습니다. 코드 작성부터 빌드, 배포, 운영까지 이어지는 전체 개발 라이프사이클을 직접 경험할 수 있었고, 서비스 개발의 흐름을 보다 입체적으로 이해할 수 있었습니다.
-모두가 각자의 자리에서 최선을 다해준 덕분에 의미 있는 결과를 만들어낼 수 있었다고 생각합니다. 우리 팀원분들 모두 Biddinggo를 위해 고생 많으셨습니다.
+> 이번 프로젝트를 진행하며 가장 크게 느낀 점은, 인프라와 DevOps 영역은 단순히 배포를 자동화하는 기술이 아니라 서비스의 안정성과 운영 흐름 전체를 설계하는 과정이라는 점이었습니다.
+처음에는 단순히 코드가 빌드되고 서버에 올라가는 과정 정도로 생각했지만, 직접 구축해보니 작은 구조 하나에도 수많은 고민이 필요했습니다. 예를 들어 어떤 방식으로 무중단 배포를 구성할지, 컨테이너와 클러스터를 어떻게 분리하고 관리할지, 배포 자동화 과정에서 장애가 발생하면 어떤 방식으로 복구할지 등 단순 구현을 넘어 운영 관점의 설계가 중요하다는 것을 체감했습니다.
+특히 백엔드나 프론트엔드처럼 결과가 화면에 바로 보이는 영역과 달리, 눈에 보이지 않는 흐름 속에서 동작하기 때문에 전체 구조를 명확히 이해하지 못하면 작은 설정 하나만으로도 배포가 실패하거나 서비스가 중단될 수 있었습니다. 그 과정에서 단순히 기능을 구현하는 개발자가 아니라, 서비스가 안정적으로 운영될 수 있는 구조를 고민하는 시야가 중요하다는 점을 배울 수 있었습니다.
 
 #### 한규진
-> 개발을 진행할 때는 인지하지 못했지만, 다시 코드를 돌아보며 예외 발생 시 데이터 일관성까지 충분히 고려하지 못했다는 점을 알게 되었습니다. 특히 회원 탈퇴 기능에서 여러 작업이 함께 수행되는 과정에서, 중간에 예외가 발생하면 일부 데이터만 반영된 상태로 남을 수 있다는 점을 확인했습니다. 이를 통해 하나의 요청 안에서 여러 작업이 이루어질 때는 일관성을 보장하는 설계가 필요하며, 프론트와 백엔드가 동일한 결과를 인식하도록 구성해야 한다는 점을 느꼈습니다. 그렇지 않을 경우 사용자에게 혼란을 줄 수 있고, 잘못된 상태에서 추가 요청이 발생할 수 있기 때문입니다.
-또한 요청이 서버를 거쳐 데이터에 반영되고 다시 화면에 전달되는 전체 흐름을 경험하면서 웹 애플리케이션의 동작 구조를 더 잘 이해할 수 있었습니다. 데이터 조회와 응답을 구성하는 과정에서도, 어떤 데이터를 어떻게 가져오고 조합하느냐에 따라 결과가 달라질 수 있다는 점을 알게 되었습니다.
-마지막으로 GitHub Issue와 PR을 통해 작업 단위를 나누고 변경 사항을 공유하면서, 작업 의도와 영향 범위를 팀원들과 명확히 전달하는 것이 협업의 효율과 코드 이해도를 높이는 데 중요하다는 점도 경험했습니다.
+> CI/CD를 처음 공부할 때는 단순히 “자동 배포” 정도로만 이해했습니다. 하지만 Jenkins, GitHub Webhook, Docker, Kubernetes, Argo CD를 직접 연결하면서 많은 문제를 겪었고, 그 과정에서 전체 흐름을 이해하는 것이 중요하다는 것을 깨달았습니다.
+처음에는 GitHub에 push를 했는데 Jenkins가 동작하지 않는 문제가 있었습니다. 원인을 찾아보니 Webhook 설정과 ngrok 주소 변경 문제였습니다. 이 경험을 통해 GitHub → Webhook → Jenkins로 이어지는 이벤트 기반 구조를 이해하게 되었습니다.
+또한 Docker 이미지를 새로 빌드했는데 Kubernetes에서는 이전 버전 컨테이너가 계속 실행되는 문제도 있었습니다. 원인은 deployment yaml의 이미지 태그가 변경되지 않았기 때문이었고, 이를 해결하기 위해 Jenkins가 k8s manifest의 이미지 버전을 수정하고 Git에 다시 push하도록 구성했습니다.
+이 과정에서 Argo CD의 역할도 제대로 이해하게 되었습니다. 처음에는 Argo CD가 직접 컨테이너를 실행하는 줄 알았지만, 실제로 Pod를 생성하고 배포를 수행하는 것은 Kubernetes였습니다. Argo CD는 Git에 저장된 deployment yaml의 변경 사항을 감지하고, Desired State와 Live State를 비교해 차이가 발생하면 Kubernetes에 적용을 요청하는 역할이라는 점을 알게 되었습니다.
+
+
+
+<br/>
+
